@@ -53,12 +53,9 @@
 </template>
 
 <script>
-import axios from "axios";
-
 // 设为 true 并配置 API_BASE 后可恢复在线音乐
 const ENABLE_MUSIC_API = false;
 const API_BASE = "https://blogme.top:3000";
-const request = axios.create({ timeout: 8000 });
 
 export default {
   data() {
@@ -73,6 +70,7 @@ export default {
       play: true, // 播放 / 暂停
       dt: 0, // 歌曲时长
       show: false,
+      request: null,
     };
   },
   mounted() {
@@ -82,15 +80,20 @@ export default {
       navigator.userAgent
     );
     if (this.show) {
-      this.getHotMusic();
+      this.initMusic();
     }
   },
   methods: {
+    async initMusic() {
+      const axios = (await import("axios")).default;
+      this.request = axios.create({ timeout: 8000 });
+      this.getHotMusic();
+    },
     // 获取热门歌曲
     getHotMusic() {
-      if (!ENABLE_MUSIC_API) return;
+      if (!ENABLE_MUSIC_API || !this.request) return;
 
-      request
+      this.request
         .get(`${API_BASE}/top/list?idx=0`)
         .then((data) => {
           const tracks = data.data && data.data.playlist && data.data.playlist.tracks;
@@ -103,12 +106,12 @@ export default {
     },
     // 获取歌曲Url
     getMusicUrl() {
-      if (!ENABLE_MUSIC_API) return;
+      if (!ENABLE_MUSIC_API || !this.request) return;
 
       const track = this.audioData[this.audioId];
       if (!track) return;
 
-      request
+      this.request
         .get(`${API_BASE}/song/url?id=${track.id}`)
         .then((res) => {
           const songData = res.data && res.data.data && res.data.data[0];
@@ -119,7 +122,7 @@ export default {
           this.song = track.al.name;
           this.singer = track.ar[0].name;
 
-          request
+          this.request
             .get(`${API_BASE}/song/detail?ids=${songData.id}`)
             .then((data) => {
               const song = data.data && data.data.songs && data.data.songs[0];
