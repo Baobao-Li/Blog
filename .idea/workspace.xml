@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d42b84cf-78b8-47db-bd00-96629837a79d" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/docs/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/about/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/about/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/css/0.styles.8c7423e8.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/img/bg.2cfdbb33.svg" beforeDir="false" afterPath="$PROJECT_DIR$/docs/assets/img/bg.2cfdbb33.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/1.00f94a45.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/10.e1538018.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/11.67f26f00.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/12.3c56e3d0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/13.d18d597c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/14.76d76a83.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/15.4a9568cd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/16.69e7beca.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/17.d5ae224c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/18.aabe5e9f.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/19.ba595535.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/20.457d4479.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/21.9057826b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/22.995cf717.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/23.684f7b83.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/24.a5a5df3e.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/25.46720576.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/26.738f3771.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/27.4fe64811.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/28.5903600f.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/29.8c531fe3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/3.a7a9bd87.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/30.e43ff127.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/31.93e54183.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/32.edff8633.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/33.3b76eacf.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/34.94db1148.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/35.dfdf25ee.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/36.efc734e0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/37.efbd7234.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/38.109893fd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/39.7f759a72.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/4.e2b96d85.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/40.166cc5a8.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/41.08fe78e1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/42.5963cf04.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/43.1f4a6a5f.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/44.11b02b2f.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/45.de8fbb10.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/46.38b197b7.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/47.d8aed866.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/48.d3444426.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/49.5a2fe346.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/5.b1d8f438.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/50.1d0468a2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/6.d71211d4.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/7.244954c3.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/8.3791281a.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/9.72882307.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/assets/js/app.5e051a96.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/categories/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/categories/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/exploit/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/exploit/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/timeline/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/timeline/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/Git/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/Git/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/Mind/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/Mind/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/React/JSX.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/React/JSX.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/React/MVVM.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/React/MVVM.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/React/Props.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/React/Props.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/React/React生命周期.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/React/React生命周期.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/React/React组件.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/React/React组件.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/React/React路由.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/React/React路由.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/React/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/React/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/React/redux.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/React/redux.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/React/redux中间件.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/React/redux中间件.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/React/组件通信.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/React/组件通信.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/React/高阶组件.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/React/高阶组件.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/ReactHooks/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/ReactHooks/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/Ts/TypeScript高级用法.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/Ts/TypeScript高级用法.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/Ts/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/Ts/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/VX/WXS.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/VX/WXS.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/VX/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/VX/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/VX/wepy组件通信.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/VX/wepy组件通信.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/VX/小程序事件.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/VX/小程序事件.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/VX/小程序组件.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/VX/小程序组件.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/VX/小程序组件化.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/VX/小程序组件化.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/VX/小程序路由.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/VX/小程序路由.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/Vue/Babel.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/Vue/Babel.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/Vue/Es6.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/Vue/Es6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/Vue/Es6方法扩展.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/Vue/Es6方法扩展.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/Vue/Promise.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/Vue/Promise.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/Vue/Vue 各种方法之间的区别.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/Vue/Vue 各种方法之间的区别.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/Vue/Vue动画.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/Vue/Vue动画.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/Vue/Vue组件.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/Vue/Vue组件.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/Vue/Vue路由.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/Vue/Vue路由.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/Vue/Webpack.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/Vue/Webpack.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/Vue/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/Vue/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/Vue/vuex.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/Vue/vuex.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/Vue/vue钩子函数.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/Vue/vue钩子函数.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/web/Webpack/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/web/Webpack/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.vuepress/plugins/musicPlayer/musicPlayer/musicPlayer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/.vuepress/plugins/musicPlayer/musicPlayer/musicPlayer.vue" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Baobao-Li"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Baobao-Li/Blog.git",
+    "accountId": "f514f452-021c-4242-99cb-6aa2c6aa6406"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="3EwROKfU9KwtwbU7pdOxZPt93nb" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-WS-252.26199.162" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="d42b84cf-78b8-47db-bd00-96629837a79d" name="更改" comment="" />
+      <created>1781087613953</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1781087613953</updated>
+      <workItem from="1781087615641" duration="138000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

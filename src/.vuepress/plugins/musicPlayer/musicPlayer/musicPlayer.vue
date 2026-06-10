@@ -54,6 +54,12 @@
 
 <script>
 import axios from "axios";
+
+// 设为 true 并配置 API_BASE 后可恢复在线音乐
+const ENABLE_MUSIC_API = false;
+const API_BASE = "https://blogme.top:3000";
+const request = axios.create({ timeout: 8000 });
+
 export default {
   data() {
     return {
@@ -70,46 +76,60 @@ export default {
     };
   },
   mounted() {
+    if (!ENABLE_MUSIC_API) return;
+
     this.show = !/Android|webOS|iPhone|iPod|BlackBerry/i.test(
       navigator.userAgent
     );
-  },
-  created() {
-    this.getHotMusic();
+    if (this.show) {
+      this.getHotMusic();
+    }
   },
   methods: {
     // 获取热门歌曲
     getHotMusic() {
-      axios.get(`https://blogme.top:3000/top/list?idx=${0}`).then((data) => {
-        if (data.data.playlist.tracks.length) {
-          this.audioData = data.data.playlist.tracks;
-          this.getMusicUrl();
-        }
-      });
+      if (!ENABLE_MUSIC_API) return;
+
+      request
+        .get(`${API_BASE}/top/list?idx=0`)
+        .then((data) => {
+          const tracks = data.data && data.data.playlist && data.data.playlist.tracks;
+          if (tracks && tracks.length) {
+            this.audioData = tracks;
+            this.getMusicUrl();
+          }
+        })
+        .catch(() => {});
     },
     // 获取歌曲Url
     getMusicUrl() {
-      axios
-        .get(
-          `https://blogme.top:3000/song/url?id=${
-            this.audioData[this.audioId].id
-          }`
-        )
+      if (!ENABLE_MUSIC_API) return;
+
+      const track = this.audioData[this.audioId];
+      if (!track) return;
+
+      request
+        .get(`${API_BASE}/song/url?id=${track.id}`)
         .then((res) => {
-          this.audioUrl = res.data.data[0].url; // Mp3 Url
-          this.audioSrc = this.audioData[this.audioId].al.picUrl; // Mp3 封面
-          this.song = this.audioData[this.audioId].al.name; // 歌曲名称
-          this.singer = this.audioData[this.audioId].ar[0].name; // 歌手名称
-          // 获取歌曲时间
-          axios
-            .get(
-              `https://blogme.top:3000/song/detail?ids=${res.data.data[0].id}`
-            )
+          const songData = res.data && res.data.data && res.data.data[0];
+          if (!songData) return;
+
+          this.audioUrl = songData.url;
+          this.audioSrc = track.al.picUrl;
+          this.song = track.al.name;
+          this.singer = track.ar[0].name;
+
+          request
+            .get(`${API_BASE}/song/detail?ids=${songData.id}`)
             .then((data) => {
-              this.dt = data.data.songs[0].dt
-              this.schedule()
-            });
-        });
+              const song = data.data && data.data.songs && data.data.songs[0];
+              if (song) {
+                this.dt = song.dt;
+              }
+            })
+            .catch(() => {});
+        })
+        .catch(() => {});
     },
     // 上一首
     audioUp() {
@@ -150,14 +170,6 @@ export default {
         this.$refs.audio.play();
       }
     },
-  },
-  computed: {
-    // 计算进度条
-    schedule(){
-      setInterval(() => {
-        console.log(this.dt)
-      },1000)
-    }
   },
 };
 </script>
