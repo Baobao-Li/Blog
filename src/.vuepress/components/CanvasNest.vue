@@ -53,8 +53,12 @@ export default {
       element.setAttribute("name", "canvas-nest-name");
       element.setAttribute("opacity", this.opacity);
       element.setAttribute("zIndex", this.zIndex);
+      element.integrity =
+        "sha384-D7dm2UEqb3H30SLaBboUAIC6lj4Xidzv7V5WW03GZp+nrPkBWVvfOKqUmL4VskWo";
+      element.crossOrigin = "anonymous";
+      element.referrerPolicy = "no-referrer";
       element.src =
-        "https://cdn.bootcss.com/canvas-nest.js/2.0.4/canvas-nest.js";
+        "https://cdn.jsdelivr.net/npm/canvas-nest.js@2.0.4/dist/canvas-nest.js";
       document.body.appendChild(element);
     },
   },

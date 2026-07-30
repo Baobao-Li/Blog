@@ -15,6 +15,12 @@ npm i
 ```
 
 ``` bash
+# 配置评论服务凭据（可选，不配置则评论功能关闭）
+cp .env.example .env   # 填入自己的 VALINE_APP_ID / VALINE_APP_KEY
+set -a && source .env && set +a
+```
+
+``` bash
 # 启动服务
 npm run dev
 ```

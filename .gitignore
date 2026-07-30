@@ -1,7 +1,6 @@
 # 系统
 .DS_Store
 Thumbs.db
-package-lock.json
 
 # 编辑器
 .idea/
