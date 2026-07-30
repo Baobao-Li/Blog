@@ -6,41 +6,24 @@
 </template>
 
 <script>
+import { clockParts } from "../utils/date";
+
 export default {
   data() {
     return {
-      year: "", // 年
-      month: "", // 月
-      date: "", // 日
-      hour: "", // 时
-      minute: "", // 分
-      second: "", // 秒
-      day: "", // 星期
-      week: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"], // 星期
+      ...clockParts(),
+      timer: null,
     };
   },
   created() {
-    this.getDate();
-    setInterval(() => {
-      this.getDate();
-    }, 1000);
+    this.timer = setInterval(this.getDate, 1000);
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
   },
   methods: {
     getDate() {
-      let time = new Date();
-      this.year = time.getFullYear(); // 年
-      this.month =
-        time.getMonth() + 1 >= 10
-          ? time.getMonth() + 1
-          : "0" + (time.getMonth() + 1); // 月
-      this.date = time.getDate() >= 10 ? time.getDate() : "0" + time.getDate(); // 日
-      this.hour =
-        time.getHours() >= 10 ? time.getHours() : "0" + time.getHours(); // 时
-      this.minute =
-        time.getMinutes() >= 10 ? time.getMinutes() : "0" + time.getMinutes(); // 分
-      this.second =
-        time.getSeconds() >= 10 ? time.getSeconds() : "0" + time.getSeconds(); // 秒
-      this.day = this.week[time.getDay()];
+      Object.assign(this, clockParts());
     },
   },
 };

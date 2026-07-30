@@ -1,6 +1,8 @@
 <template></template>
 
 <script>
+import { isDesktop } from "../utils/device";
+
 export default {
   props: {
     count: {
@@ -35,16 +37,9 @@ export default {
   mounted() {
     this.showCanvas();
   },
-  created() {},
   methods: {
-    check() {
-      let flag = navigator.userAgent.match(
-        /(phone|pod|iPhone|iPad|iPod|ios|Android|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i
-      );
-      return !flag;
-    },
     showCanvas() {
-      if (!this.check()) {
+      if (!isDesktop()) {
         return;
       }
       var element = document.createElement("script");

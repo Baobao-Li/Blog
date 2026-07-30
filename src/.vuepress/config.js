@@ -12,9 +12,7 @@ module.exports = {
   },
   head: [
     ['link', { rel: 'icon', href: '/img/logo.jpg' }],
-    ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }],
-    ["script", { "language": "javascript", "type": "text/javascript", "src": "https://cdn.staticfile.org/jquery/1.7.2/jquery.min.js" }],
-    ["script", { "language": "javascript", "type": "text/javascript", "src": "/js/MouseClickEffect.js" }]
+    ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }]
   ],
   // 主题
   theme: 'reco',

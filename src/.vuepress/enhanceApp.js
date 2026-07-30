@@ -8,8 +8,7 @@
 
 // 引入全局icon
 import "./public/css/iconfont.css"
-
-
+import setupMouseClickEffect from "./client/mouseClickEffect"
 
 // 使用异步函数也是可以的
 export default ({
@@ -18,9 +17,8 @@ export default ({
   router, // 当前应用的路由实例
   siteData, // 站点元数据
   isServer, // 当前应用配置是处于 服务端渲染 或 客户端
-  Times
 }) => {
-  // ...做一些其他的应用级别的优化
+  if (!isServer) {
+    setupMouseClickEffect()
+  }
 }
-
-// (!/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent))

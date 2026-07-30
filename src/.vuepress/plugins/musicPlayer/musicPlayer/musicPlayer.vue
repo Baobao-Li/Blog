@@ -10,16 +10,12 @@
         <!-- 歌曲 - 歌手 名称 -->
         <div class="name">
           <div class="songName">
-            <div style="white-space:nowrap;">歌曲名称：</div>
-            <div
-              style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width: 65px;"
-            >{{song}}</div>
+            <div class="label">歌曲名称：</div>
+            <div class="value">{{song}}</div>
           </div>
           <div class="singerName">
-            <div style="white-space:nowrap">歌手名称：</div>
-            <div
-              style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width: 65px;"
-            >{{singer}}</div>
+            <div class="label">歌手名称：</div>
+            <div class="value">{{singer}}</div>
           </div>
         </div>
 
@@ -53,6 +49,9 @@
 </template>
 
 <script>
+import { isDesktop } from "../../../utils/device";
+import { nextIndex, prevIndex } from "../../../utils/loop";
+
 // 设为 true 并配置 API_BASE 后可恢复在线音乐
 const ENABLE_MUSIC_API = false;
 const API_BASE = "https://blogme.top:3000";
@@ -76,9 +75,7 @@ export default {
   mounted() {
     if (!ENABLE_MUSIC_API) return;
 
-    this.show = !/Android|webOS|iPhone|iPod|BlackBerry/i.test(
-      navigator.userAgent
-    );
+    this.show = isDesktop();
     if (this.show) {
       this.initMusic();
     }
@@ -136,29 +133,19 @@ export default {
     },
     // 上一首
     audioUp() {
-      if (this.audioId === 0) {
-        this.audioId = 0;
-      } else {
-        this.audioId = this.audioId - 1;
-      }
+      this.audioId = prevIndex(this.audioId);
       this.play = true;
       this.getMusicUrl();
     },
     // 下一首
     audioDown() {
-      this.audioId = this.audioId + 1;
-      if (this.audioId >= this.audioData.length) {
-        this.audioId = 0;
-      }
+      this.audioId = nextIndex(this.audioId, this.audioData.length);
       this.play = true;
       this.getMusicUrl();
     },
     // 播放结束
     ended() {
-      this.audioId = this.audioId + 1;
-      if (this.audioId >= this.audioData.length) {
-        this.audioId = 0;
-      }
+      this.audioId = nextIndex(this.audioId, this.audioData.length);
       this.getMusicUrl();
     },
     // 暂停 - 播放
@@ -226,21 +213,23 @@ export default {
       flex-direction: column;
       padding-right: 40px;
       font-size: 12px;
-      // 歌曲名称
-      .songName {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        margin-top: 5px;
-        color: #000000;
-      }
-      // 歌手名称
+      // 歌曲名称 - 歌手名称
+      .songName,
       .singerName {
         flex: 1;
         display: flex;
         align-items: center;
         margin-top: 5px;
         color: #000000;
+        .label {
+          white-space: nowrap;
+        }
+        .value {
+          width: 65px;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
       }
     }
     // 切换 - 进度条 - 上一首 - 暂停 - 下一首
