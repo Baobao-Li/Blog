@@ -1,5 +1,13 @@
 const plugins = require('./config/plugins/')
 
+// 评论服务（Valine / LeanCloud）凭据从环境变量读取，不要写进仓库
+const valineAppId = process.env.VALINE_APP_ID
+const valineAppKey = process.env.VALINE_APP_KEY
+
+if (!valineAppId || !valineAppKey) {
+  console.warn('[vuepress] 未检测到 VALINE_APP_ID / VALINE_APP_KEY，评论功能已关闭。参考 .env.example')
+}
+
 module.exports = {
   dest: './docs/',
   base: '/Blog/',
@@ -13,7 +21,12 @@ module.exports = {
   head: [
     ['link', { rel: 'icon', href: '/img/logo.jpg' }],
     ['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }],
-    ["script", { "language": "javascript", "type": "text/javascript", "src": "https://cdn.staticfile.org/jquery/1.7.2/jquery.min.js" }],
+    ["script", {
+      "src": "https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js",
+      "integrity": "sha384-1H217gwSVyLSIfaLxHbE7dRb3v4mYCKbpQvzx0cegeju1MVsGrX5xXxAvs/HgeFs",
+      "crossorigin": "anonymous",
+      "referrerpolicy": "no-referrer"
+    }],
     ["script", { "language": "javascript", "type": "text/javascript", "src": "/js/MouseClickEffect.js" }]
   ],
   // 主题
@@ -89,14 +102,18 @@ module.exports = {
       lineNumbers: true
     },
     // 评论
-    valineConfig: {
-      appId: 'Trwckl7wKNY3wKLM1ElptTri-gzGzoHsz',
-      appKey: 'SR6LrGyTVmpNfJWyQyzCv96z',
-      placeholder: '填写邮箱可以收到回复哦!',
-      notify: true, // 邮件提醒
-      verify: true, // 验证码
-      recordIP: true
-    },
+    ...(valineAppId && valineAppKey
+      ? {
+        valineConfig: {
+          appId: valineAppId,
+          appKey: valineAppKey,
+          placeholder: '填写邮箱可以收到回复哦!',
+          notify: true, // 邮件提醒
+          verify: true, // 验证码
+          recordIP: true
+        }
+      }
+      : {}),
     // https://vuepress-theme-reco.recoluan.com/
   },
   plugins
