@@ -1,6 +1,6 @@
 <template>
   <div class="musicPlayer" v-if="show">
-    <div class="con">
+    <div class="con" :title="errorMessage">
       <!-- 旋转封面 -->
       <div class="cover" style="transform: translateX(50%)">
         <img :src="audioSrc ? audioSrc : 'img/logo.jpg'" alt />
@@ -48,7 +48,7 @@
       </div>
     </div>
 
-    <audio autoplay :src="audioUrl" @ended="ended" ref="audio"></audio>
+    <audio autoplay :src="audioUrl" @ended="ended" @error="onAudioError" ref="audio"></audio>
   </div>
 </template>
 
@@ -71,6 +71,7 @@ export default {
       dt: 0, // 歌曲时长
       show: false,
       request: null,
+      errorMessage: "", // 最近一次失败的原因
     };
   },
   mounted() {
@@ -80,59 +81,97 @@ export default {
       navigator.userAgent
     );
     if (this.show) {
-      this.initMusic();
+      this.initMusic().catch((error) => {
+        this.reportError("音乐播放器初始化失败", error);
+      });
     }
   },
   methods: {
+    // 统一记录失败原因，避免错误被静默丢弃
+    reportError(context, error) {
+      this.errorMessage = context;
+      console.error(`[musicPlayer] ${context}`, error);
+    },
     async initMusic() {
-      const axios = (await import("axios")).default;
-      this.request = axios.create({ timeout: 8000 });
-      this.getHotMusic();
+      try {
+        const axios = (await import("axios")).default;
+        this.request = axios.create({ timeout: 8000 });
+      } catch (error) {
+        this.reportError("音乐播放器依赖加载失败", error);
+        this.show = false;
+        return;
+      }
+      await this.getHotMusic();
     },
     // 获取热门歌曲
-    getHotMusic() {
+    async getHotMusic() {
       if (!ENABLE_MUSIC_API || !this.request) return;
 
-      this.request
-        .get(`${API_BASE}/top/list?idx=0`)
-        .then((data) => {
-          const tracks = data.data && data.data.playlist && data.data.playlist.tracks;
-          if (tracks && tracks.length) {
-            this.audioData = tracks;
-            this.getMusicUrl();
-          }
-        })
-        .catch(() => {});
+      let response;
+      try {
+        response = await this.request.get(`${API_BASE}/top/list?idx=0`);
+      } catch (error) {
+        this.reportError("热门歌曲列表获取失败", error);
+        return;
+      }
+
+      const tracks =
+        response.data && response.data.playlist && response.data.playlist.tracks;
+      if (!tracks || !tracks.length) {
+        this.reportError("热门歌曲列表为空", response.data);
+        return;
+      }
+
+      this.audioData = tracks;
+      await this.getMusicUrl();
     },
     // 获取歌曲Url
-    getMusicUrl() {
+    async getMusicUrl() {
       if (!ENABLE_MUSIC_API || !this.request) return;
 
       const track = this.audioData[this.audioId];
-      if (!track) return;
+      if (!track) {
+        this.reportError(`歌曲不存在: index ${this.audioId}`, null);
+        return;
+      }
 
-      this.request
-        .get(`${API_BASE}/song/url?id=${track.id}`)
-        .then((res) => {
-          const songData = res.data && res.data.data && res.data.data[0];
-          if (!songData) return;
+      let response;
+      try {
+        response = await this.request.get(`${API_BASE}/song/url?id=${track.id}`);
+      } catch (error) {
+        this.reportError(`歌曲地址获取失败: ${track.id}`, error);
+        return;
+      }
 
-          this.audioUrl = songData.url;
-          this.audioSrc = track.al.picUrl;
-          this.song = track.al.name;
-          this.singer = track.ar[0].name;
+      const songData =
+        response.data && response.data.data && response.data.data[0];
+      if (!songData || !songData.url) {
+        this.reportError(`歌曲地址为空: ${track.id}`, response.data);
+        return;
+      }
 
-          this.request
-            .get(`${API_BASE}/song/detail?ids=${songData.id}`)
-            .then((data) => {
-              const song = data.data && data.data.songs && data.data.songs[0];
-              if (song) {
-                this.dt = song.dt;
-              }
-            })
-            .catch(() => {});
-        })
-        .catch(() => {});
+      this.errorMessage = "";
+      this.audioUrl = songData.url;
+      this.audioSrc = (track.al && track.al.picUrl) || this.audioSrc;
+      this.song = (track.al && track.al.name) || "";
+      this.singer = (track.ar && track.ar[0] && track.ar[0].name) || "";
+
+      await this.getMusicDetail(songData.id);
+    },
+    // 获取歌曲详情（时长），非关键信息
+    async getMusicDetail(id) {
+      try {
+        const response = await this.request.get(
+          `${API_BASE}/song/detail?ids=${id}`
+        );
+        const song =
+          response.data && response.data.songs && response.data.songs[0];
+        if (song) {
+          this.dt = song.dt;
+        }
+      } catch (error) {
+        console.warn(`[musicPlayer] 歌曲详情获取失败: ${id}`, error);
+      }
     },
     // 上一首
     audioUp() {
@@ -142,7 +181,7 @@ export default {
         this.audioId = this.audioId - 1;
       }
       this.play = true;
-      this.getMusicUrl();
+      this.switchTrack();
     },
     // 下一首
     audioDown() {
@@ -151,7 +190,7 @@ export default {
         this.audioId = 0;
       }
       this.play = true;
-      this.getMusicUrl();
+      this.switchTrack();
     },
     // 播放结束
     ended() {
@@ -159,18 +198,43 @@ export default {
       if (this.audioId >= this.audioData.length) {
         this.audioId = 0;
       }
-      this.getMusicUrl();
+      this.switchTrack();
+    },
+    // 音频加载/解码失败
+    onAudioError(event) {
+      this.play = false;
+      this.reportError(
+        `音频加载失败: ${this.song || this.audioUrl}`,
+        event.target && event.target.error
+      );
+    },
+    switchTrack() {
+      this.getMusicUrl().catch((error) => {
+        this.reportError("切换歌曲失败", error);
+      });
     },
     // 暂停 - 播放
     playEvent() {
+      const audio = this.$refs.audio;
+      if (!audio) {
+        this.reportError("播放器未就绪", null);
+        return;
+      }
       if (this.play) {
         // false 暂停
         this.play = false;
-        this.$refs.audio.pause();
-      } else {
-        // true 播放
-        this.play = true;
-        this.$refs.audio.play();
+        audio.pause();
+        return;
+      }
+      // true 播放
+      this.play = true;
+      const played = audio.play();
+      // 浏览器自动播放策略会让 play() 返回被拒绝的 Promise
+      if (played && typeof played.catch === "function") {
+        played.catch((error) => {
+          this.play = false;
+          this.reportError("播放失败，请重试", error);
+        });
       }
     },
   },

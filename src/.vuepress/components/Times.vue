@@ -17,13 +17,20 @@ export default {
       second: "", // 秒
       day: "", // 星期
       week: ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"], // 星期
+      timer: null,
     };
   },
   created() {
     this.getDate();
-    setInterval(() => {
+    this.timer = setInterval(() => {
       this.getDate();
     }, 1000);
+  },
+  beforeDestroy() {
+    if (this.timer) {
+      clearInterval(this.timer);
+      this.timer = null;
+    }
   },
   methods: {
     getDate() {
