@@ -55,20 +55,29 @@ export default {
       element.setAttribute("zIndex", this.zIndex);
       element.src =
         "https://cdn.bootcss.com/canvas-nest.js/2.0.4/canvas-nest.js";
+      element.onerror = (event) => {
+        console.error("[CanvasNest] 背景动画脚本加载失败", element.src, event);
+        this.$emit("error", event);
+      };
       document.body.appendChild(element);
     },
   },
   beforeDestroy() {
     if (!this.global) {
-      var canvas = document.getElementsByTagName("canvas");
+      var canvas = Array.prototype.slice.call(
+        document.getElementsByTagName("canvas")
+      );
       for (let i = 0; i < canvas.length; i++) {
         canvas[i].style.display = "none";
         canvas[i].remove();
       }
-      var scripts = document.getElementsByTagName("script");
+      var scripts = Array.prototype.slice.call(
+        document.getElementsByTagName("script")
+      );
       for (var i = 0; i < scripts.length; i++) {
         if (
           scripts[i] &&
+          scripts[i].parentNode &&
           scripts[i].getAttribute("name") == "canvas-nest-name"
         ) {
           scripts[i].parentNode.removeChild(scripts[i]);
